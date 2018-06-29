@@ -1,18 +1,23 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ title  }}</h1>
+    <Search />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mapState } from 'vuex';
+import Search from "@/components/Search.vue";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    Search
+  },
+  computed: {
+  ...mapState([
+    "title"
+    ])
   }
 };
 </script>

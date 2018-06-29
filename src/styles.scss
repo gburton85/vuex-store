@@ -1,0 +1,25 @@
+@import "variables.scss";
+
+html, #app, .home {
+    height: 100%;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+body {
+    background-color: #F4F4F4;
+    margin: 0;
+    height: 100%;
+}
+
+button {
+    padding: 10px;
+    border-radius: 1px;
+    background-color: #ffb3ba;
+    border: none;
+    color: #4d4d4d;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+        background-color: #ffdfba;
+        cursor: pointer;
+    }
+}
