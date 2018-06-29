@@ -5,7 +5,7 @@
         <h3>Make</h3>
         <ul>
           <li v-for="product in products" :key="product.Vehicle.id">
-              <input type="checkbox" :id="product.Vehicle.Manufacturer" :value="product.Vehicle.Manufacturer" v-model="selectedFilter">
+              <input type="checkbox" :value="product.Vehicle.Manufacturer" v-model="selectedFilter">
               <label>{{ product.Vehicle.Manufacturer }}</label>
           </li>
         </ul>

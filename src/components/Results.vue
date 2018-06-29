@@ -2,7 +2,7 @@
   <div class="results">
     <h1>Results</h1>
     <ul>
-      <li v-if="selectedFilter === product.Vehicle.Manufacturer" v-for="product in products" :key="product.Vehicle.id">
+      <li v-show="selectedFilter === product.Vehicle.Manufacturer" v-for="product in products" :key="product.Vehicle.id">
         <img v-bind:src="product.Vehicle.Url">
         <div>
           <h3>
@@ -35,7 +35,8 @@ export default {
   computed: {
     ...mapState([
       'products',
-      'activeProduct'
+      'activeProduct',
+      'selectedFilter'
     ])
   },
   methods: {
