@@ -43,14 +43,14 @@ export default new Vuex.Store({
       }
     ],
     activeProduct: '',
-    selectedFilter: ''
+    // selectedFilter: ''
   },
   mutations: {
     setActiveProduct(state, product) {
       state.activeProduct = product;
     },
-    setSelectedFilter(state, filter) {
-      state.selectedFilter = filter;
-    },
+    // setSelectedFilter(state, filter) {
+    //   state.selectedFilter = filter;
+    // },
   }
 });

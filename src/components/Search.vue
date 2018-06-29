@@ -5,7 +5,8 @@
         <h3>Make</h3>
         <ul>
           <li v-for="product in products" :key="product.Vehicle.id">
-              <input type="checkbox" :value="product.Vehicle.Manufacturer" v-model="selectedFilter">
+            <!-- :value="product.Vehicle.Manufacturer" v-model="selectedFilter" -->
+              <input type="checkbox">
               <label>{{ product.Vehicle.Manufacturer }}</label>
           </li>
         </ul>
@@ -19,7 +20,7 @@
 
 <script>
 import Results from '@/components/Results.vue'
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'Search',
@@ -35,15 +36,14 @@ export default {
       'products'
       ])
   },
-  methods: {
-     ...mapMutations([
-      'selectedFilter'
-    ]),
-   selectedFilter(val) {
-      this.$store.commit('setSelectedFilter', val)
-    }
-  }
-};
+  // methods: {
+  //    ...mapMutations([
+  //     'selectedFilter'
+  //   ])
+  //  selectedFilter(val) {
+  //     this.$store.commit('setSelectedFilter', val)
+  //   }
+}
 </script>
 
 <style scoped lang="scss">

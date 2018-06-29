@@ -2,7 +2,8 @@
   <div class="results">
     <h1>Results</h1>
     <ul>
-      <li v-show="selectedFilter === product.Vehicle.Manufacturer" v-for="product in products" :key="product.Vehicle.id">
+      <!-- v-show="selectedFilter === product.Vehicle.Manufacturer" -->
+      <li v-for="product in products" :key="product.Vehicle.id">
         <img v-bind:src="product.Vehicle.Url">
         <div>
           <h3>
@@ -36,13 +37,13 @@ export default {
     ...mapState([
       'products',
       'activeProduct',
-      'selectedFilter'
+      // 'selectedFilter'
     ])
   },
   methods: {
      ...mapMutations([
       'setActiveProduct',
-      'setSelectedFilter'
+      // 'setSelectedFilter'
     ]),
     setActiveProduct(val) {
       this.$store.commit('setActiveProduct', val)
