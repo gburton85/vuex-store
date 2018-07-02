@@ -77,4 +77,8 @@ input {
   margin-bottom: 50px;
   outline: none;
 }
+
+label {
+  cursor: pointer;
+}
 </style>
