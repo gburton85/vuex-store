@@ -1,8 +1,8 @@
 <template>
   <div class="vehicleLayout">
-		<div class="left">    
+		<div class="left">
         <img v-bind:src="product.Vehicle.Url">
-            
+
 		</div>
 		<div class="right">
       <div class="rightAlign">
@@ -29,9 +29,6 @@ name: 'Vehicle',
     ...mapState([
       'products',
     ]),
-    store() {
-      return this.$store.state
-    }
   }
 }
 </script>

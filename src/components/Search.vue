@@ -4,12 +4,16 @@
       <div>
         <h3>Filter</h3>
         <ul>
-          <li v-for="product in products" :key="product.Vehicle.id">
+          <li v-for="product in productManufacturers" :key="product.Vehicle.id">
+            <label>
               <input
                 type="checkbox"
-                v-model="selectedBox"
+                :value="product.Vehicle.Manufacturer"
+                v-model="activeFilters"
+                @click="$store.commit('toggleActiveFilter', product.Vehicle.Manufacturer)"
               >
-                <label>{{ product.Vehicle.Manufacturer }}</label>
+              {{ product.Vehicle.Manufacturer }}
+            </label>
           </li>
         </ul>
       </div>
@@ -26,30 +30,17 @@ import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'Search',
-  data() {
-    return {
-      filter: ''
-    }
-  },
   components: {
     Results
   },
   computed: {
     ...mapState([
       'products',
-      'selected'
-      ]),
-    ...mapGetters([
-      'filterProduct'
+      'activeFilters'
     ]),
-    ...mapMutations([
-      'selectedProducts'
+    ...mapGetters([
+      'productManufacturers'
     ])
-  },
-  methods: {
-    selectedBox() {
-        this.filter = this.product.Vehicle.Manufacturer
-    }
   }
 }
 

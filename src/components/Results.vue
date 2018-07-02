@@ -2,21 +2,21 @@
   <div class="results">
     <h1>Results</h1>
     <ul>
-      <li v-for="selected in selected" :key="selected.Vehicle.id">
-        <img v-bind:src="selected.Vehicle.Url">
+      <li v-for="product in filteredProducts" :key="product.Vehicle.id">
+        <img v-bind:src="product.Vehicle.Url">
         <div>
           <h3>
-            {{ selected.Vehicle.Manufacturer }}
-            {{ selected.Vehicle.Model }}
+            {{ product.Vehicle.Manufacturer }}
+            {{ product.Vehicle.Model }}
           </h3>
           <h3>
-            
+
             <router-link
               :to="`./Vehicle/${product.Vehicle.id}`"
             >
               <button>Details </button>
             </router-link>
-            
+
           </h3>
         </div>
       </li>
@@ -35,9 +35,8 @@ export default {
     };
   },
   computed: {
-    ...mapState([
-      'products',
-      'selected'
+    ...mapGetters([
+      'filteredProducts',
     ])
   }
 };
