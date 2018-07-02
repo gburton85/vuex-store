@@ -1,13 +1,14 @@
 <template>
   <div class="vehicleLayout">
-		<div class="left">
-    	<h1>Vehicle</h1>
-   		<pre>{{ activeProduct }}</pre>
-
-        <!-- {{ activeProduct.Vehicle.Manufacturer }}
-        {{ activeProduct.Vehicle.Model }} -->
+		<div class="left">    
+        <img v-bind:src="product.Vehicle.Url">
+            
 		</div>
 		<div class="right">
+      <div class="rightAlign">
+        {{ product.Vehicle.Manufacturer }}
+        {{ product.Vehicle.Model }}
+      </div>
 		</div>
 
   </div>
@@ -15,19 +16,18 @@
 
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  name: 'Vehicle',
+name: 'Vehicle',
   data() {
     return {
-       
+      product: this.$store.getters.getProductById(this.$route.params.id),
     }
   },
   computed: {
     ...mapState([
       'products',
-			'activeProduct',
     ]),
     store() {
       return this.$store.state

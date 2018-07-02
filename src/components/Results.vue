@@ -13,14 +13,9 @@
           <h3>
             
             <router-link
-              v-model="setActiveProduct"
-              :to="'./Vehicle/'+product.Vehicle.id"
+              :to="`./Vehicle/${product.Vehicle.id}`"
             >
-              <button 
-                :value="$store.state.activeProduct"
-                >
-                More
-              </button>
+              <button>Details </button>
             </router-link>
             
           </h3>
@@ -31,30 +26,19 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Results',
   data() {
-    return {};
+    return {
+      products: this.$store.getters.filterProduct(this.params.Manufacturer),
+    };
   },
   computed: {
     ...mapState([
-      'products',
-      'activeProduct'
-      // ,
-      // 'selectedFilter'
+      'products'
     ])
-  },
-  methods: {
-     ...mapMutations([
-      'setActiveProduct'
-      // ,
-      // 'setSelectedFilter'
-    ]),
-    setActiveProduct(state, product) {
-      store.commit('setActiveProduct', product )
-    }
   }
 };
 </script>

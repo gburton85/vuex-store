@@ -6,8 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     title: 'shop',
-    activeProduct: '',
-    // selectedFilter: '',
     products: [
       {
         Vehicle: {
@@ -45,12 +43,12 @@ export default new Vuex.Store({
       }
     ]
   },
-  mutations: {
-    setActiveProduct(state, product) {
-      state.activeProduct = product;
+  getters: {
+    getProductById(state) {
+      return (id) => state.products.find(product => product.Vehicle.id == id);
     },
-    // setSelectedFilter(state, filter) {
-    //   state.selectedFilter = filter;
-    // },
-  }
+    filterProduct(state) {
+      return (Manufacturer) => state.products.filter(product => product.Vehicle.Manufacturer == Manufacturer);
+    }
+  },
 });

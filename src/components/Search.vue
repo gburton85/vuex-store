@@ -2,7 +2,7 @@
   <div class="searchLayout">
     <div class="left">
       <div>
-        <h3>Make</h3>
+        <h3>Filter</h3>
         <ul>
           <li v-for="product in products" :key="product.Vehicle.id">
             <!-- :click="selectedFilter" -->
@@ -20,12 +20,13 @@
 
 <script>
 import Results from '@/components/Results.vue'
-import { mapState, mapMutations } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Search',
   data() {
     return {
+
     }
   },
   components: {
@@ -36,14 +37,6 @@ export default {
       'products'
       ])
   }
-  // methods: {
-  //    ...mapMutations([
-  //     'selectedFilter'
-  //   ]),
-  //  selectedFilter(val) {
-  //     this.$store.commit('setSelectedFilter', val)
-  //   }
-  // }
 }
 </script>
 
