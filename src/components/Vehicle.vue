@@ -1,29 +1,33 @@
 <template>
-  <div class="Vehicle">
-    <h1>Vehicle</h1>
-    <pre>store.$state.activeProduct: {{ $store.state.activeProduct }}</pre>
-
-        <!-- {{ activeProduct.Vehicle.Manufacturer }}
-        {{ activeProduct.Vehicle.Model }} -->
+  <div class="vehicleLayout">
+		<div class="left">    
+        <img v-bind:src="product.Vehicle.Url">
+            
+		</div>
+		<div class="right">
+      <div class="rightAlign">
+        {{ product.Vehicle.Manufacturer }}
+        {{ product.Vehicle.Model }}
+      </div>
+		</div>
 
   </div>
 </template>
 
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  name: 'Vehicle',
+name: 'Vehicle',
   data() {
     return {
-        product: this.$store.getters.productById(this.$route.params['id'])
+      product: this.$store.getters.getProductById(this.$route.params.id),
     }
   },
   computed: {
     ...mapState([
       'products',
-      'activeProduct'
     ]),
     store() {
       return this.$store.state
@@ -33,5 +37,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.vehicleLayout {
+  display: grid;
+  grid-template-columns: repeat(2, 40% 60%);
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "left right";
+}
+.left, .right {
+  padding: 30px;
+}
 </style>

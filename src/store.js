@@ -41,16 +41,14 @@ export default new Vuex.Store({
           Description: 'PORSCHE PANAMERA HATCHBACK 2.9 V6 4 E-Hybrid 5dr PDK'
         }
       }
-    ],
-    activeProduct: '',
-    // selectedFilter: ''
+    ]
   },
-  mutations: {
-    setActiveProduct(state, product) {
-      state.activeProduct = product;
+  getters: {
+    getProductById(state) {
+      return (id) => state.products.find(product => product.Vehicle.id == id);
     },
-    // setSelectedFilter(state, filter) {
-    //   state.selectedFilter = filter;
-    // },
-  }
+    filterProduct(state) {
+      return (Manufacturer) => state.products.filter(product => product.Vehicle.Manufacturer == Manufacturer);
+    }
+  },
 });

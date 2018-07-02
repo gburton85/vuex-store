@@ -13,10 +13,10 @@
           <h3>
             
             <router-link
-            :to="'./Vehicle/'+product.Vehicle.id"
-            @input="setActiveProduct" 
-            :value="$store.state.activeProduct"
-            ><button>More</button></router-link>
+              :to="`./Vehicle/${product.Vehicle.id}`"
+            >
+              <button>Details </button>
+            </router-link>
             
           </h3>
         </div>
@@ -26,28 +26,19 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Results',
   data() {
-    return {};
+    return {
+      products: this.$store.getters.filterProduct(this.params.Manufacturer),
+    };
   },
   computed: {
     ...mapState([
-      'products',
-      'activeProduct',
-      // 'selectedFilter'
+      'products'
     ])
-  },
-  methods: {
-     ...mapMutations([
-      'setActiveProduct',
-      // 'setSelectedFilter'
-    ]),
-    setActiveProduct(val) {
-      this.$store.commit('setActiveProduct', val)
-    }
   }
 };
 </script>
