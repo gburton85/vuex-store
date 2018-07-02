@@ -13,10 +13,15 @@
           <h3>
             
             <router-link
-            :to="'./Vehicle/'+product.Vehicle.id"
-            @input="setActiveProduct" 
-            :value="$store.state.activeProduct"
-            ><button>More</button></router-link>
+              v-model="setActiveProduct"
+              :to="'./Vehicle/'+product.Vehicle.id"
+            >
+              <button 
+                :value="$store.state.activeProduct"
+                >
+                More
+              </button>
+            </router-link>
             
           </h3>
         </div>
@@ -26,7 +31,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'Results',
@@ -36,17 +41,19 @@ export default {
   computed: {
     ...mapState([
       'products',
-      'activeProduct',
+      'activeProduct'
+      // ,
       // 'selectedFilter'
     ])
   },
   methods: {
      ...mapMutations([
-      'setActiveProduct',
+      'setActiveProduct'
+      // ,
       // 'setSelectedFilter'
     ]),
-    setActiveProduct(val) {
-      this.$store.commit('setActiveProduct', val)
+    setActiveProduct(state, product) {
+      store.commit('setActiveProduct', product )
     }
   }
 };

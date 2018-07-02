@@ -5,9 +5,9 @@
         <h3>Make</h3>
         <ul>
           <li v-for="product in products" :key="product.Vehicle.id">
-            <!-- :value="product.Vehicle.Manufacturer" v-model="selectedFilter" -->
-              <input type="checkbox">
-              <label>{{ product.Vehicle.Manufacturer }}</label>
+            <!-- :click="selectedFilter" -->
+              <input type="checkbox" >
+                <label>{{ product.Vehicle.Manufacturer }}</label>
           </li>
         </ul>
       </div>
@@ -35,14 +35,15 @@ export default {
     ...mapState([
       'products'
       ])
-  },
+  }
   // methods: {
   //    ...mapMutations([
   //     'selectedFilter'
-  //   ])
+  //   ]),
   //  selectedFilter(val) {
   //     this.$store.commit('setSelectedFilter', val)
   //   }
+  // }
 }
 </script>
 

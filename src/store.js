@@ -6,6 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     title: 'shop',
+    activeProduct: '',
+    // selectedFilter: '',
     products: [
       {
         Vehicle: {
@@ -41,9 +43,7 @@ export default new Vuex.Store({
           Description: 'PORSCHE PANAMERA HATCHBACK 2.9 V6 4 E-Hybrid 5dr PDK'
         }
       }
-    ],
-    activeProduct: '',
-    // selectedFilter: ''
+    ]
   },
   mutations: {
     setActiveProduct(state, product) {

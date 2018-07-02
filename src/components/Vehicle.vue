@@ -1,10 +1,14 @@
 <template>
-  <div class="Vehicle">
-    <h1>Vehicle</h1>
-    <pre>store.$state.activeProduct: {{ $store.state.activeProduct }}</pre>
+  <div class="vehicleLayout">
+		<div class="left">
+    	<h1>Vehicle</h1>
+   		<pre>{{ activeProduct }}</pre>
 
         <!-- {{ activeProduct.Vehicle.Manufacturer }}
         {{ activeProduct.Vehicle.Model }} -->
+		</div>
+		<div class="right">
+		</div>
 
   </div>
 </template>
@@ -17,13 +21,13 @@ export default {
   name: 'Vehicle',
   data() {
     return {
-        product: this.$store.getters.productById(this.$route.params['id'])
+       
     }
   },
   computed: {
     ...mapState([
       'products',
-      'activeProduct'
+			'activeProduct',
     ]),
     store() {
       return this.$store.state
@@ -33,5 +37,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.vehicleLayout {
+  display: grid;
+  grid-template-columns: repeat(2, 40% 60%);
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "left right";
+}
+.left, .right {
+  padding: 30px;
+}
 </style>
