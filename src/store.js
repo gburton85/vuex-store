@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     title: 'shop',
+    activeFilters: [],
     products: [
       {
         Vehicle: {
@@ -47,8 +48,29 @@ export default new Vuex.Store({
     getProductById(state) {
       return (id) => state.products.find(product => product.Vehicle.id == id);
     },
-    filterProduct(state) {
-      return (Manufacturer) => state.products.filter(product => product.Vehicle.Manufacturer == Manufacturer);
-    }
+    filteredProducts(state) {
+      const filteredList = state.products.filter(product => state.activeFilters.includes(product.Vehicle.Manufacturer));
+      return filteredList.length > 0 ? filteredList : state.products;
+    },
+    productManufacturers(state) {
+      const unique = {};
+      return state.products.filter(product => {
+        if (!unique[product.Vehicle.Manufacturer]) {
+          unique[product.Vehicle.Manufacturer] = true;
+          return true;
+        }
+        return false
+      });
+    },
   },
+  mutations: {
+    toggleActiveFilter(state, filter) {
+      const index = state.activeFilters.indexOf(filter);
+      if (index >= 0 ) {
+        state.activeFilters.splice(index, 1);
+      } else {
+        state.activeFilters.push(filter);
+      }
+    }
+  }
 });

@@ -2,8 +2,7 @@
   <div class="results">
     <h1>Results</h1>
     <ul>
-      <!-- v-show="selectedFilter === product.Vehicle.Manufacturer" -->
-      <li v-for="product in products" :key="product.Vehicle.id">
+      <li v-for="product in filteredProducts" :key="product.Vehicle.id">
         <img v-bind:src="product.Vehicle.Url">
         <div>
           <h3>
@@ -11,13 +10,13 @@
             {{ product.Vehicle.Model }}
           </h3>
           <h3>
-            
+
             <router-link
               :to="`./Vehicle/${product.Vehicle.id}`"
             >
               <button>Details </button>
             </router-link>
-            
+
           </h3>
         </div>
       </li>
@@ -30,14 +29,14 @@ import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Results',
-  data() {
+  data () {
     return {
-      products: this.$store.getters.filterProduct(this.params.Manufacturer),
+
     };
   },
   computed: {
-    ...mapState([
-      'products'
+    ...mapGetters([
+      'filteredProducts',
     ])
   }
 };

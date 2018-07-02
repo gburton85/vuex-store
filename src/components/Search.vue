@@ -4,10 +4,16 @@
       <div>
         <h3>Filter</h3>
         <ul>
-          <li v-for="product in products" :key="product.Vehicle.id">
-            <!-- :click="selectedFilter" -->
-              <input type="checkbox" >
-                <label>{{ product.Vehicle.Manufacturer }}</label>
+          <li v-for="product in productManufacturers" :key="product.Vehicle.id">
+            <label>
+              <input
+                type="checkbox"
+                :value="product.Vehicle.Manufacturer"
+                v-model="activeFilters"
+                @click="$store.commit('toggleActiveFilter', product.Vehicle.Manufacturer)"
+              >
+              {{ product.Vehicle.Manufacturer }}
+            </label>
           </li>
         </ul>
       </div>
@@ -20,24 +26,24 @@
 
 <script>
 import Results from '@/components/Results.vue'
-import { mapState } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'Search',
-  data() {
-    return {
-
-    }
-  },
   components: {
     Results
   },
   computed: {
     ...mapState([
-      'products'
-      ])
+      'products',
+      'activeFilters'
+    ]),
+    ...mapGetters([
+      'productManufacturers'
+    ])
   }
 }
+
 </script>
 
 <style scoped lang="scss">

@@ -4,9 +4,11 @@
       <div class="left">
         <span class="brand">{{ title  }}</span>
       </div>
-      <div class="right alignRight">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+      <div class="right">
+        <div class="rightAlign">
+          <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>
+        </div>
       </div>
     </nav>
     <router-view/>
@@ -36,10 +38,6 @@ nav {
 }
 .left, .right {
   padding: 10px 30px;
-}
-
-.alignRight {
-  text-align: right;
 }
 
 span.brand {
