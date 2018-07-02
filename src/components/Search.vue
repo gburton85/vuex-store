@@ -5,8 +5,10 @@
         <h3>Filter</h3>
         <ul>
           <li v-for="product in products" :key="product.Vehicle.id">
-            <!-- :click="selectedFilter" -->
-              <input type="checkbox" >
+              <input
+                type="checkbox"
+                v-model="selectedBox"
+              >
                 <label>{{ product.Vehicle.Manufacturer }}</label>
           </li>
         </ul>
@@ -20,13 +22,13 @@
 
 <script>
 import Results from '@/components/Results.vue'
-import { mapState } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'Search',
   data() {
     return {
-
+      filter: ''
     }
   },
   components: {
@@ -34,10 +36,23 @@ export default {
   },
   computed: {
     ...mapState([
-      'products'
-      ])
+      'products',
+      'selected'
+      ]),
+    ...mapGetters([
+      'filterProduct'
+    ]),
+    ...mapMutations([
+      'selectedProducts'
+    ])
+  },
+  methods: {
+    selectedBox() {
+        this.filter = this.product.Vehicle.Manufacturer
+    }
   }
 }
+
 </script>
 
 <style scoped lang="scss">
